@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @OA\Schema(
+ *   schema="User",
+ *   description="User Schema",
+ * )
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -15,6 +21,23 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     *
+     * @OA\Property(
+     *   property="id",
+     *   type="number",
+     *   description="User ID"
+     * )
+     * @OA\Property(
+     *   property="name",
+     *   type="string",
+     *   description="User name"
+     * )
+     * @OA\Property(
+     *   property="email",
+     *   type="string",
+     *   description="User email",
+     *   example="test@test.com",
+     * )
      */
     protected $fillable = [
         'name',
