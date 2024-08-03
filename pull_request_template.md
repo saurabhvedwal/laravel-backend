@@ -1,6 +1,5 @@
-## Title: [Title]
-## Type: [Feature | Bug | Task | POC]
 ## Description: [Description]
+## Type: [Feature | Bug | Task | POC]
 ## Tasks:
 1. [Task 1]
 2. [Task 2]
