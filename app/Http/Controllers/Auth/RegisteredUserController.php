@@ -18,6 +18,36 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    /**
+     * @OA\Post(
+     *  path="/register",
+     *  operationId="registerUser",
+     *  tags={"Authentication"},
+     *  summary="Register User",
+     *  description="Register User",
+     *  @OA\RequestBody(
+     *      required=true,
+     *      description="Register User Request",
+     *      @OA\JsonContent(
+     *        @OA\Property(property="name",type="string",example="John Doe"),
+     *        @OA\Property(property="email",type="string",example="test@test.com"),
+     *        @OA\Property(property="password",type="string",example="password"),
+     *      )
+     *    ),
+     *  @OA\Response(
+     *      response=200,
+     *      description="Successful operation",
+     *   ),
+     *  @OA\Response(
+     *      response=401,
+     *      description="Unauthenticated",
+     *  ),
+     *  @OA\Response(
+     *      response=403,
+     *      description="Forbidden"
+     *  )
+     * )
+     */
     public function store(Request $request): Response
     {
         $request->validate([
