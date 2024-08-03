@@ -25,6 +25,15 @@ class RegisteredUserController extends Controller
      *  tags={"Authentication"},
      *  summary="Register User",
      *  description="Register User",
+     *  @OA\RequestBody(
+     *      required=true,
+     *      description="Register User Request",
+     *      @OA\JsonContent(
+     *        @OA\Property(property="name",type="string",example="John Doe"),
+     *        @OA\Property(property="email",type="string",example="test@test.com"),
+     *        @OA\Property(property="password",type="string",example="password"),
+     *      )
+     *    ),
      *  @OA\Response(
      *      response=200,
      *      description="Successful operation",

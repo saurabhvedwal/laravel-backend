@@ -20,21 +20,13 @@ class AuthenticatedSessionController extends Controller
      *  tags={"Authentication"},
      *  summary="Login",
      *  description="Login user with email and password",
-     *  @OA\Parameter(
-     *      name="email",
-     *      in="query",
-     *      required=true,
-     *      @OA\Schema(
-     *           type="string"
-     *      )
-     *  ),
-     *  @OA\Parameter(
-     *      name="password",
-     *      in="query",
-     *      required=true,
-     *      @OA\Schema(
-     *          type="string"
-     *      )
+     *  @OA\RequestBody(
+     *    required=true,
+     *    description="The Token Request",
+     *    @OA\JsonContent(
+     *      @OA\Property(property="email",type="string",example="your@email.com"),
+     *      @OA\Property(property="password",type="string",example="YOUR_PASSWORD"),
+     *    )
      *  ),
      *  @OA\Response(
      *      response=200,
@@ -47,7 +39,11 @@ class AuthenticatedSessionController extends Controller
      *  @OA\Response(
      *      response=403,
      *      description="Forbidden"
-     *  )
+     *  ),
+     *  @OA\Response(
+     *      response=422,
+     *      description="The provided credentials are incorrect.",
+     *  ),
      * )
      */
     public function store(LoginRequest $request): Response
@@ -63,7 +59,7 @@ class AuthenticatedSessionController extends Controller
      * Destroy an authenticated session.
      */
     /**
-     * @OA\Get(
+     * @OA\Post(
      *  path="/logout",
      *  operationId="userLogout",
      *  tags={"Authentication"},
