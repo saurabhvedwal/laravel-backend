@@ -15,6 +15,27 @@ class PasswordResetLinkController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    /**
+     * @OA\Post(
+     *  path="/forgot-password",
+     *  operationId="forgotPassword",
+     *  tags={"Authentication"},
+     *  summary="Forgot Password",
+     *  description="Forgot Password",
+     *  @OA\Response(
+     *      response=200,
+     *      description="Successful operation",
+     *   ),
+     *  @OA\Response(
+     *      response=401,
+     *      description="Unauthenticated",
+     *  ),
+     *  @OA\Response(
+     *      response=403,
+     *      description="Forbidden"
+     *  )
+     * )
+     */
     public function store(Request $request): JsonResponse
     {
         $request->validate([

@@ -19,6 +19,27 @@ class NewPasswordController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    /**
+     * @OA\Post(
+     *   path="/reset-password",
+     *   operationId="resetPassword",
+     *   tags={"Authentication"},
+     *   summary="Reset Password",
+     *   description="Reset Password",
+     *   @OA\Response(
+     *       response=200,
+     *       description="Successful operation",
+     *    ),
+     *   @OA\Response(
+     *       response=401,
+     *       description="Unauthenticated",
+     *   ),
+     *   @OA\Response(
+     *       response=403,
+     *       description="Forbidden"
+     *   )
+     *  )
+     */
     public function store(Request $request): JsonResponse
     {
         $request->validate([

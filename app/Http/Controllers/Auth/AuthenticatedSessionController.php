@@ -13,6 +13,43 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    /**
+     * @OA\Post(
+     *  path="/login",
+     *  operationId="userLogin",
+     *  tags={"Authentication"},
+     *  summary="Login",
+     *  description="Login user with email and password",
+     *  @OA\Parameter(
+     *      name="email",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *           type="string"
+     *      )
+     *  ),
+     *  @OA\Parameter(
+     *      name="password",
+     *      in="query",
+     *      required=true,
+     *      @OA\Schema(
+     *          type="string"
+     *      )
+     *  ),
+     *  @OA\Response(
+     *      response=200,
+     *      description="Successful operation",
+     *   ),
+     *  @OA\Response(
+     *      response=401,
+     *      description="Unauthenticated",
+     *  ),
+     *  @OA\Response(
+     *      response=403,
+     *      description="Forbidden"
+     *  )
+     * )
+     */
     public function store(LoginRequest $request): Response
     {
         $request->authenticate();
@@ -24,6 +61,27 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Destroy an authenticated session.
+     */
+    /**
+     * @OA\Get(
+     *  path="/logout",
+     *  operationId="userLogout",
+     *  tags={"Authentication"},
+     *  summary="Logout",
+     *  description="Logout user",
+     *  @OA\Response(
+     *      response=200,
+     *      description="Successful operation",
+     *   ),
+     *  @OA\Response(
+     *      response=401,
+     *      description="Unauthenticated",
+     *  ),
+     *  @OA\Response(
+     *      response=403,
+     *      description="Forbidden"
+     *  )
+     * )
      */
     public function destroy(Request $request): Response
     {
